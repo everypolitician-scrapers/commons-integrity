@@ -66,4 +66,13 @@ describe 'Wikidata identifiers' do
       end
     end
   end
+
+  describe 'differently named column' do
+    let(:config) { Commons::Integrity::Config.new('test/fixtures/config/wikidata-wdid.yml') }
+    let(:file) { 'test/fixtures/wikidata_in_different_column.csv' }
+
+    it 'finds errors in the wdid column' do
+      subject.errors.size.must_equal 1
+    end
+  end
 end
