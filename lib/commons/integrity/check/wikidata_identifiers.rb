@@ -14,6 +14,9 @@ class Commons
 
         private
 
+        DEFAULT_COLUMN_NAME = 'wikidata'
+        DEFAULT_COLUMN_CASE = 'any'
+
         def csv
           @csv ||= CSV.read(pathname, headers: true)
         end
@@ -22,9 +25,21 @@ class Commons
           csv.headers
         end
 
+        def column_name
+          my_config.to_h['column_name'] || DEFAULT_COLUMN_NAME
+        end
+
+        def comparison_type
+          my_config.to_h['column_case'] || DEFAULT_COLUMN_CASE
+        end
+
+        def comparison_conversion
+          return :to_s if comparison_type == 'fixed'
+          :downcase
+        end
+
         def wikidata_column
-          # TODO: allow configuration of capitalisation etc.
-          headers.find { |header| header.downcase == 'wikidata' }
+          headers.find { |header| header.send(comparison_conversion) == column_name.send(comparison_conversion) }
         end
 
         def wikidata_column?
@@ -32,7 +47,7 @@ class Commons
         end
 
         def wikidata_values
-          return unless wikidata_column?
+          return [] unless wikidata_column?
           csv.map { |row| row[wikidata_column] }
         end
 
