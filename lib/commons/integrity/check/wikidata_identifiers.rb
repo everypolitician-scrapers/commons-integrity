@@ -22,14 +22,18 @@ class Commons
           csv.headers
         end
 
-        def wikidata_column?
+        def wikidata_column
           # TODO: allow configuration of capitalisation etc.
-          headers.include? 'wikidata'
+          headers.find { |header| header.downcase == 'wikidata' }
+        end
+
+        def wikidata_column?
+          wikidata_column
         end
 
         def wikidata_values
           return unless wikidata_column?
-          csv.map { |row| row['wikidata'] }
+          csv.map { |row| row[wikidata_column] }
         end
 
         def problematic_values
