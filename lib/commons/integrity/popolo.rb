@@ -8,6 +8,10 @@ class Popolo
 
   attr_reader :data
 
+  def languages_in_use
+    items.flat_map(&:languages_in_use).to_set
+  end
+
   def items
     data.values.flatten.map { |item| PopoloItem.new(item) }
   end
@@ -21,6 +25,10 @@ class PopoloItem
 
   attr_reader :data
 
+  def languages_in_use
+    data.keys.flat_map { |key| self[key].languages_in_use }
+  end
+
   def [](key)
     PopoloValue.new(data[key])
   end
@@ -33,4 +41,9 @@ class PopoloValue
   end
 
   attr_reader :value
+
+  def languages_in_use
+    return [] unless value.is_a? Hash
+    value.keys.map { |key| key.scan(/^lang:(.*)/) }.flatten
+  end
 end
