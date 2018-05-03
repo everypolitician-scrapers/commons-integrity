@@ -1,0 +1,3 @@
+WikidataIdentifiers:
+  column_name: 'Wikidata'
+  column_case: 'fixed'
