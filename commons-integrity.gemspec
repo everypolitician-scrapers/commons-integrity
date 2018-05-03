@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   spec.executables = ['check']
   spec.require_paths = ['lib']
 
+  spec.add_dependency 'activesupport'
   spec.add_dependency 'json'
   spec.add_dependency 'require_all'
 
