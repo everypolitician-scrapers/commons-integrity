@@ -49,3 +49,6 @@ like existing checks.
 
 Each should inherit from `Commons::Integrity::Check::Base` and supply
 its own `errors` method.
+
+Documentation for the Check should be added in [YARD](https://yardoc.org/)
+format.
