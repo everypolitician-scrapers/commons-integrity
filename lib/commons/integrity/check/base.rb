@@ -18,6 +18,10 @@ class Commons
           name.sub('Commons::Integrity::Check::', '')
         end
 
+        def applies?
+          filename.fnmatch my_config.dig('AppliesTo')
+        end
+
         private
 
         attr_reader :filename, :given_config
