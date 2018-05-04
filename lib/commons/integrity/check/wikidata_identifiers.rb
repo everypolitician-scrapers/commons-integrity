@@ -6,8 +6,20 @@ require 'csv'
 class Commons
   class Integrity
     class Check
-      # Check that any values in the `wikidata` column look like valid IDs
+      # Check that any values in a "wikidata" column look like valid IDs
+      #
+      # Given a CSV file with a column of Wikidata identifiers, this
+      # Check will ensure that all the values in that column look like
+      # valid identifiers (i.e. are Q-numbers). It does *not* check that
+      # they are _actually_ valid IDs: only that they are of the correct
+      # form.
+      #
+      # == Configuration Options
+      # * column_name: the column containing the IDs (default: "wikidata")
+      # * column_case: "fixed" if the column_name must be exactly as specified (default: "any")
       class WikidataIdentifiers < Base
+        # @return [Array<Error>]
+        # Errors will be in the category `:wikidata_id_format`
         def errors
           problematic_values.map { |val| error(wikidata_id_format: "Invalid wikidata ID: #{val}") }
         end
