@@ -8,7 +8,7 @@
 
 Add to the `Gemfile` dependencies for a proto-commons- repository:
 
-    gem 'commons-integrity', github => 'everypolitician/commons-integrity'
+    gem 'commons-integrity', :github => 'everypolitician/commons-integrity'
 
 ### Configuration
 
