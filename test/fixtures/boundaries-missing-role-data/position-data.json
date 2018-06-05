@@ -1,0 +1,24 @@
+[
+  {
+    "role_id": "Q20058725",
+    "role_name": {
+      "lang:pt-br": "Deputado federal",
+      "lang:pt": "deputado do Brasil",
+      "lang:en": "member of the Chamber of Deputies of Brazil"
+    },
+    "generic_role_id": "Q1055894",
+    "generic_role_name": {
+      "lang:pt-br": "Deputado",
+      "lang:pt": "deputado",
+      "lang:en": "deputy"
+    },
+    "role_level": "Q6256",
+    "role_type": "Q4175034",
+    "organization_id": "Q1834804",
+    "organization_name": {
+      "lang:pt-br": "Câmara dos Deputados",
+      "lang:pt": "Câmara dos Deputados do Brasil",
+      "lang:en": "Chamber of Deputies"
+    }
+  }
+]
