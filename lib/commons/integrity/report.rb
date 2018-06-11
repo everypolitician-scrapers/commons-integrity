@@ -23,11 +23,9 @@ class Commons
 
       attr_reader :file, :config
 
-      ALL_CHECKS = Commons::Integrity::Check::Base.descendants
-
       def relevant_checks
         return [] unless config
-        ALL_CHECKS.select { |check| file.fnmatch config.for(check.moniker).dig('AppliesTo') }
+        config.checks.select { |check| check.new(file, config: config).applies? }
       end
     end
   end

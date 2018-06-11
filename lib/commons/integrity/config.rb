@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+require 'active_support/core_ext/class/subclasses'
+require 'require_all'
+
+require_relative 'config'
+require_rel 'check'
 require 'yaml'
 
 class Commons
@@ -17,11 +22,17 @@ class Commons
         yaml[check]
       end
 
+      def checks
+        @checks ||= ALL_CHECKS.select { |check| self.for(check.moniker) }
+      end
+
       private
 
       attr_reader :supplied_location
 
       DEFAULT_LOCATION = Pathname.pwd + '.integrity.yml'
+
+      ALL_CHECKS = Commons::Integrity::Check::Base.descendants
 
       def yaml
         return {} unless config_exists?
