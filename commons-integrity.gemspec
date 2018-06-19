@@ -16,7 +16,6 @@ Gem::Specification.new do |spec|
     f.match(%r{^(test|spec|features)/})
   end
   spec.bindir = 'bin'
-  spec.executables = ['check']
   spec.require_paths = ['lib']
 
   spec.add_dependency 'activesupport'
