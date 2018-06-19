@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class Commons
-  class Integrity
+module Commons
+  module Integrity
     class Check
       # All other checks should inherit from here, and override `errors`
       class Base

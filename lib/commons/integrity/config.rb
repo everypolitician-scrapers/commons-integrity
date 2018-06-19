@@ -2,8 +2,8 @@
 
 require 'yaml'
 
-class Commons
-  class Integrity
+module Commons
+  module Integrity
     # This represents the configuration. For now we only have a single
     # config file, but I expect this will become more complex later, and
     # will likely need split into an abstract `Config` combining

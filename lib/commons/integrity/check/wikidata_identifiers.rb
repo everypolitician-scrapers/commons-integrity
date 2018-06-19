@@ -3,8 +3,8 @@
 require_relative 'base'
 require 'csv'
 
-class Commons
-  class Integrity
+module Commons
+  module Integrity
     class Check
       # Check that any values in a "wikidata" column look like valid IDs
       #

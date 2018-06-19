@@ -36,6 +36,8 @@ to display the errors. We plan to make both of these much simpler.
 An example `bin/check` could do something like:
 
 ```ruby
+  require 'commons/integrity'
+
   root = Pathname.new(ARGV.first || '.')
   files = Pathname.glob(root + '**/*')
   errors = files.map { |file| Commons::Integrity::Report.new(file: file).errors }

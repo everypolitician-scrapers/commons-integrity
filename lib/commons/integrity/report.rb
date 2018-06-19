@@ -6,8 +6,8 @@ require 'require_all'
 require_relative 'config'
 require_rel 'check'
 
-class Commons
-  class Integrity
+module Commons
+  module Integrity
     # Collate the errors from all reports applying to a file
     class Report
       def initialize(file:, config: nil)
