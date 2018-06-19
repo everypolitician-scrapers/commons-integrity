@@ -43,4 +43,12 @@ describe 'Wikidata identifiers' do
       subject.errors.first.message.must_equal 'Invalid wikidata ID: q20067765'
     end
   end
+
+  describe 'when no checks are configured' do
+    let(:config) { Commons::Integrity::Config.new('test/fixtures/config/empty.yml') }
+
+    it 'should report no errors' do
+      subject.errors.must_be_empty
+    end
+  end
 end

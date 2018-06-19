@@ -27,7 +27,13 @@ class Commons
 
       def relevant_checks
         return [] unless config
-        ALL_CHECKS.select { |check| file.fnmatch config.for(check.moniker).dig('AppliesTo') }
+        ALL_CHECKS.select do |check|
+          check_config = config.for(check.moniker)
+          if check_config
+            pattern = check_config.dig('AppliesTo')
+            file.fnmatch pattern if pattern
+          end
+        end
       end
     end
   end
