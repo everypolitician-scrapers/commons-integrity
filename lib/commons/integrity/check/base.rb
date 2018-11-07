@@ -5,9 +5,10 @@ module Commons
     class Check
       # All other checks should inherit from here, and override `errors`
       class Base
-        def initialize(filename, config: nil)
+        def initialize(filename, config: nil, builder_config: nil)
           @filename = filename
           @given_config = config
+          @builder_config = builder_config
         end
 
         def errors
@@ -20,7 +21,7 @@ module Commons
 
         private
 
-        attr_reader :filename, :given_config
+        attr_reader :filename, :given_config, :builder_config
 
         # Simple struct to represent any errors raised
         Error = Struct.new(:category, :message, :filename)
